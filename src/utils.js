@@ -87,7 +87,7 @@ nv.utils.getColor = function(color) {
 
     //if passed an array, turn it into a color scale
     } else if(nv.utils.isArray(color)) {
-        var color_scale = d3.scale.ordinal().range(color);
+        var color_scale = d3.scaleOrdinal().range(color);
         return function(d, i) {
             var key = i === undefined ? d : i;
             return d.color || color_scale(key);
