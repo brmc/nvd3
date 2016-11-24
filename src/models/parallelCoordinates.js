@@ -12,7 +12,7 @@ nv.models.parallelCoordinates = function() {
         , height = null
         , availableWidth = null
         , availableHeight = null
-        , x = d3.scale.ordinal()
+        , x = d3.scaleOrdinal()
         , y = {}
         , undefinedValuesLabel = "undefined values"
         , dimensionData = []
@@ -114,7 +114,7 @@ nv.models.parallelCoordinates = function() {
                 }
                 //Use 90% of (availableHeight - 12) for the axis range, 12 reprensenting the space necessary to display "undefined values" text.
                 //The remaining 10% are used to display the missingValue line.
-                y[d] = d3.scale.linear()
+                y[d] = d3.scaleLinear()
                     .domain([min, max])
                     .range([(availableHeight - 12) * 0.9, 0]);
 
@@ -275,7 +275,7 @@ nv.models.parallelCoordinates = function() {
                         //If it's not already the case, allow brush to select undefined values
                         if (axisWithUndefinedValues.indexOf(p.key) < 0) {
 
-                            var newscale = d3.scale.linear().domain([min, domain[1]]).range([availableHeight - 12, range[1]]);
+                            var newscale = d3.scaleLinear().domain([min, domain[1]]).range([availableHeight - 12, range[1]]);
                             y[p.key].brush.y(newscale);
                             axisWithUndefinedValues.push(p.key);
                         }

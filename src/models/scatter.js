@@ -13,9 +13,9 @@ nv.models.scatter = function() {
         , pointBorderColor = null
         , id           = Math.floor(Math.random() * 100000) //Create semi-unique ID incase user doesn't select one
         , container    = null
-        , x            = d3.scale.linear()
-        , y            = d3.scale.linear()
-        , z            = d3.scale.linear() //linear because d3.svg.shape.size is treated as area
+        , x            = d3.scaleLinear()
+        , y            = d3.scaleLinear()
+        , z            = d3.scaleLinear() //linear because d3.svg.shape.size is treated as area
         , getX         = function(d) { return d.x } // accessor to get the x value
         , getY         = function(d) { return d.y } // accessor to get the y value
         , getSize      = function(d) { return d.size || 1} // accessor to get the point size
@@ -105,7 +105,7 @@ nv.models.scatter = function() {
             });
 
             // Setup Scales
-            var logScale = chart.yScale().name === d3.scale.log().name ? true : false;
+            var logScale = chart.yScale().name === d3.scaleLog().name ? true : false;
             // remap and flatten the data for use in calculating the scales' domains
             var seriesData = (xDomain && yDomain && sizeDomain) ? [] : // if we know xDomain and yDomain and sizeDomain, no need to calculate.... if Size is constant remember to set sizeDomain to speed up performance
                 d3.merge(
