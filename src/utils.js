@@ -295,7 +295,7 @@ nv.utils.renderWatch = function(dispatch, duration) {
     this.renderEnd = function() {
         if (renderStack.every( function(d){ return d.__rendered; } )) {
             renderStack.forEach( function(d){ d.__rendered = false; });
-            dispatch.renderEnd.apply(this, arguments);
+            dispatch.apply('renderEnd', this, arguments);
         }
     }
 
@@ -391,7 +391,7 @@ nv.utils.state = function(){
             init = null;
         }
         if (_set.call(this)) {
-            this.dispatch.call('change', state);
+            this.dispatch.call('change', this, state);
         }
     };
 
