@@ -27,7 +27,7 @@ nv.models.sankeyChart = function() {
     var format = function(d) {
         return formatNumber(d) + ' ' + units;
     };
-    var color = d3.scale.category20();
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
     var linkTitle = function(d){
         return d.source.name + ' → ' + d.target.name + '\n' + format(d.value);
     };

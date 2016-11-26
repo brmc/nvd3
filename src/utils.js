@@ -108,7 +108,7 @@ Default color chooser uses a color scale of 20 colors from D3
  */
 nv.utils.defaultColor = function() {
     // get range of the scale so we'll turn it into our own function.
-    return nv.utils.getColor(d3.scale.category20().range());
+    return nv.utils.getColor(d3.scaleOrdinal(d3.schemeCategory20).range());
 };
 
 
@@ -119,7 +119,7 @@ looks for a corresponding color from the dictionary
 nv.utils.customTheme = function(dictionary, getKey, defaultColors) {
     // use default series.key if getKey is undefined
     getKey = getKey || function(series) { return series.key };
-    defaultColors = defaultColors || d3.scale.category20().range();
+    defaultColors = defaultColors || d3.scaleOrdinal(d3.schemeCategory20).range();
 
     // start at end of default color list and walk back to index 0
     var defIndex = defaultColors.length;
