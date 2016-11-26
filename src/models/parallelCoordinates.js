@@ -29,10 +29,12 @@ nv.models.parallelCoordinates = function() {
         , background
         , dimensions
         , line = d3.svg.line()
-        , axis = d3.svg.axis()
+        //, axis = d3.axis()
         , dispatch = d3.dispatch('brushstart', 'brush', 'brushEnd', 'dimensionsOrder', "stateChange", 'elementClick', 'elementMouseover', 'elementMouseout', 'elementMousemove', 'renderEnd', 'activeChanged')
         ;
 
+    // fixme not sure if this is going to work
+    var axis = d3.axisBottom(x);
     //============================================================
     // Private Variables
     //------------------------------------------------------------
