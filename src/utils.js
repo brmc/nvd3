@@ -391,7 +391,7 @@ nv.utils.state = function(){
             init = null;
         }
         if (_set.call(this)) {
-            this.dispatch.call(change, state);
+            this.dispatch.call('change', state);
         }
     };
 
