@@ -117,7 +117,7 @@ function defaultChart(containerId, data, labelType) {
       var chart = nv.models.pieChart()
           .x(function(d) { return d.key })
           .y(function(d) { return d.y })
-          .color(d3.scale.category10().range())
+          .color(d3.schemeCategory10().range())
           .width(width)
           .height(height)
           .labelType(labelType)
@@ -148,7 +148,7 @@ function defaultDonutChart(containerId, data, options) {
                 .x(function (d) {
                     return d.key
                 })
-                .color(d3.scale.category10().range())
+                .color(d3.schemeCategory10().range())
                 .width(width)
                 .height(height)
                 .donut(true);

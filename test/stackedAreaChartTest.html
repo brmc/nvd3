@@ -245,7 +245,7 @@ function nPoints() {
 //an example of harmonizing colors between visualizations
 //observe that Consumer Discretionary and Consumer Staples have
 //been flipped in the second chart
-var colors = d3.scale.category20();
+var colors = d3.schemeCategory20();
 var keyColor = function(d, i) {return colors(d.key)};
 
 function defaultChartConfig(container, data, useGuideline) {
