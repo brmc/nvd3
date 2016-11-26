@@ -411,7 +411,7 @@ chart.options = nv.utils.optionsFunc.bind(chart);
 */
 nv.utils.optionsFunc = function(args) {
     if (args) {
-        d3.map(args).forEach((function(key,value) {
+        d3.map(args).each((function(key,value) {
             if (nv.utils.isFunction(this[key])) {
                 this[key](value);
             }
