@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="../build/nv.d3.js"></script>
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/isagalaev/highlight.js/8.4/src/styles/tomorrow.css">
@@ -360,7 +360,7 @@ as well as used to print out examples using those example inputs.
             examples: [
                 ['#FF0000', '#00FF00', '#0000FF'],
                 function (d, i) {
-                    var colors = d3.scale.category20().range().slice(10);
+                    var colors = d3.schemeCategory20().range().slice(10);
                     return colors[i % colors.length-1];
                 }
             ]
@@ -761,7 +761,7 @@ as well as used to print out examples using those example inputs.
             examples: [
                 ['#FF0000', '#00FF00', '#0000FF'],
                 function (d, i) {
-                    var colors = d3.scale.category20().range().slice(10);
+                    var colors = d3.schemeCategory20().range().slice(10);
                     return colors[i % colors.length-1];
                 }
             ]

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link href="../build/nv.d3.css" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="../build/nv.d3.js"></script>
 
     <style>
@@ -36,7 +36,7 @@
             .useInteractiveGuideline(true)
             .x(function(d) { return d[0] })
             .y(function(d) { return d[1]/100 })
-            .color(d3.scale.category10().range())
+            .color(d3.schemeCategory10().range())
             .average(function(d) { return d.mean/100; })
             .duration(300)
             .clipVoronoi(false);

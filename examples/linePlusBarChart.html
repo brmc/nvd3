@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link href="../build/nv.d3.css" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="../build/nv.d3.js"></script>
 
     <style>
@@ -58,7 +58,7 @@
         chart = nv.models.linePlusBarChart()
             .margin({top: 50, right: 80, bottom: 30, left: 80})
             .legendRightAxisHint(' [Using Right Axis]')
-            .color(d3.scale.category10().range());
+            .color(d3.schemeCategory10().range());
 
         chart.xAxis.tickFormat(function(d) {
             return d3.time.format('%x')(new Date(d))
