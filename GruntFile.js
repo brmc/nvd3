@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     sourceMapStyle: 'embed'
                 },
                 src: [
-		    'src/patches.js',
+		            'src/patches.js',
                     'src/core.js',
                     'src/dom.js',
                     'src/interactiveLayer.js',
