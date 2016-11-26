@@ -1,12 +1,13 @@
-nv.models.axis = function() {
+nv.models.axis = function(val) {
     "use strict";
 
+    var axisBase = val || d3.axisBottom;
     //============================================================
     // Public Variables with Default Settings
     //------------------------------------------------------------
 
     var scale = d3.scaleLinear();
-    var axis = d3.axisBottom(scale).tickFormat(function(d) { return d });
+    var axis = axisBase(scale).tickFormat(function(d) { return d });
 
     var margin = {top: 0, right: 0, bottom: 0, left: 0}
         , width = 75 //only used for tickLabel currently

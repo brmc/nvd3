@@ -8,7 +8,7 @@ nv.models.focus = function(content) {
     var content = content || nv.models.line()
         , xAxis = nv.models.axis()
         , yAxis = nv.models.axis()
-        , brush = d3.svg.brush()
+        , brush = d3.brushX()
         ;
 
     var margin = {top: 10, right: 0, bottom: 30, left: 0}
@@ -48,7 +48,7 @@ nv.models.focus = function(content) {
             var availableWidth = nv.utils.availableWidth(width, container, margin),
                 availableHeight = height - margin.top - margin.bottom;
 
-            chart.update = function() { 
+            chart.update = function() {
                 if( duration === 0 ) {
                     container.call( chart );
                 } else {
@@ -83,7 +83,7 @@ nv.models.focus = function(content) {
             g.select('.nv-background rect')
                 .attr('width', availableWidth)
                 .attr('height', availableHeight);
-                
+
             content
                 .width(availableWidth)
                 .height(availableHeight)
@@ -95,13 +95,11 @@ nv.models.focus = function(content) {
                 .datum(data.filter(function(d) { return !d.disabled; }));
 
             d3.transition(contentWrap).call(content);
-            
+
             // Setup Brush
-            brush
-                .x(x)
-                .on('brush', function() {
-                    onBrush(syncBrushing);
-                });
+            brush.on('brush', function() {
+                onBrush(syncBrushing);
+            });
 
             brush.on('brushend', function () {
                 if (!syncBrushing) {
@@ -113,7 +111,7 @@ nv.models.focus = function(content) {
 
             var brushBG = g.select('.nv-brushBackground').selectAll('g')
                 .data([brushExtent || brush.extent()]);
-    
+
             var brushBGenter = brushBG.enter()
                 .append('g');
 
@@ -145,7 +143,7 @@ nv.models.focus = function(content) {
                 xAxis.scale(x)
                     ._ticks( nv.utils.calcTicksX(availableWidth/100, data) )
                     .tickSize(-availableHeight, 0);
-  
+
                 g.select('.nv-x.nv-axis')
                     .attr('transform', 'translate(0,' + y.range()[0] + ')');
                 d3.transition(g.select('.nv-x.nv-axis'))
@@ -161,7 +159,7 @@ nv.models.focus = function(content) {
                 d3.transition(g.select('.nv-y.nv-axis'))
                     .call(yAxis);
             }
-            
+
             g.select('.nv-x.nv-axis')
                 .attr('transform', 'translate(0,' + y.range()[0] + ')');
 
@@ -172,7 +170,7 @@ nv.models.focus = function(content) {
             //============================================================
             // Functions
             //------------------------------------------------------------
-    
+
             // Taken from crossfilter (http://square.github.com/crossfilter/)
             function resizePath(d) {
                 var e = +(d == 'e'),
@@ -188,8 +186,8 @@ nv.models.focus = function(content) {
                     + 'M' + (4.5 * x) + ',' + (y + 8)
                     + 'V' + (2 * y - 8);
             }
-    
-    
+
+
             function updateBrushBG() {
                 if (!brush.empty()) brush.extent(brushExtent);
                 brushBG
@@ -199,7 +197,7 @@ nv.models.focus = function(content) {
                             rightWidth = availableWidth - x(d[1]);
                         d3.select(this).select('.left')
                             .attr('width',  leftWidth < 0 ? 0 : leftWidth);
-    
+
                         d3.select(this).select('.right')
                             .attr('x', x(d[1]))
                             .attr('width', rightWidth < 0 ? 0 : rightWidth);
